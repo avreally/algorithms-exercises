@@ -13,9 +13,13 @@
 function bubbleSort(nums) {
   let arrayElementsSwapped;
 
+  // counting how many times the while loop went to optimize sorting by not comparing
+  // the element / elements of the array that are in correct places at the end of the array
+  let step = 1;
+
   function swapElements() {
     arrayElementsSwapped = false;
-    for (let i = 0; i < nums.length - 1; i++) {
+    for (let i = 0; i < nums.length - step; i++) {
       if (nums[i] > nums[i + 1]) {
         arrayElementsSwapped = true;
 
@@ -24,6 +28,7 @@ function bubbleSort(nums) {
         nums[i + 1] = storedValue;
       }
     }
+    step++;
   }
 
   swapElements();

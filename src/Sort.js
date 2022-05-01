@@ -12,24 +12,29 @@ function sort(array) {
   // it will deduplicate for you
 
   function bubbleSort(nums) {
-    let arrayIsSwapped;
+    let arrayElementsSwapped;
+
+    // counting how many times the while loop went to optimize sorting by not comparing
+    // the element / elements in array that are in correct places at the end of the array
+    let step = 1;
 
     function swapElements() {
-      arrayIsSwapped = false;
-      for (let i = 0; i < nums.length - 1; i++) {
+      arrayElementsSwapped = false;
+      for (let i = 0; i < nums.length - step; i++) {
         if (nums[i] > nums[i + 1]) {
-          arrayIsSwapped = true;
+          arrayElementsSwapped = true;
 
           let storedValue = nums[i];
           nums[i] = nums[i + 1];
           nums[i + 1] = storedValue;
         }
       }
+      step++;
     }
 
     swapElements();
 
-    while (arrayIsSwapped === true) {
+    while (arrayElementsSwapped === true) {
       swapElements();
     }
 
